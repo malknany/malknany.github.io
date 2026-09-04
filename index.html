@@ -630,13 +630,14 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 20px;
+            align-items: start;
         }
 
         @media (max-width: 980px) {
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 18px;
+                gap: 16px;
             }
         }
 
@@ -649,11 +650,11 @@
         .skill-box {
             background: var(--panel);
             border: 1px solid var(--line-strong);
-            padding: 26px 24px;
+            padding: 22px 20px;
             border-radius: var(--radius);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
             position: relative;
             overflow: hidden;
             transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
@@ -673,8 +674,8 @@
         .skill-box:hover {
             background: var(--panel-2);
             border-color: rgba(79, 209, 197, 0.45);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(79, 209, 197, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.5), 0 0 12px -2px rgba(79, 209, 197, 0.08);
         }
 
         .skill-box:hover::before {
@@ -686,7 +687,7 @@
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--line);
-            padding-bottom: 12px;
+            padding-bottom: 11px;
         }
 
         .skill-box-title-wrap {
@@ -696,8 +697,8 @@
         }
 
         .skill-box-icon {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 4px;
             background: var(--signal-dim);
             border: 1px solid rgba(79, 209, 197, 0.25);
@@ -709,13 +710,13 @@
         }
 
         .skill-box-icon svg {
-            width: 17px;
-            height: 17px;
+            width: 16px;
+            height: 16px;
         }
 
         .skill-box-title {
             font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 15.5px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text);
             line-height: 1.2;
@@ -743,7 +744,7 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
             line-height: 1;
-            padding: 0 12px;
+            padding: 0 11px;
             height: 30px;
             border-radius: var(--radius);
             background: var(--panel-2);
@@ -756,12 +757,6 @@
             box-sizing: border-box;
             flex-shrink: 0;
             transition: all .15s ease;
-        }
-
-        .skill-tag.featured {
-            border-color: rgba(79, 209, 197, 0.35);
-            background: rgba(79, 209, 197, 0.08);
-            color: #d1fae5;
         }
 
         .skill-tag:hover {
@@ -1115,8 +1110,8 @@
                         <span class="skill-box-count">06</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Bloc</span>
-                        <span class="skill-tag featured">Clean Architecture</span>
+                        <span class="skill-tag">Bloc</span>
+                        <span class="skill-tag">Clean Architecture</span>
                         <span class="skill-tag">Getx</span>
                         <span class="skill-tag">MVVM</span>
                         <span class="skill-tag">MVC</span>
@@ -1138,8 +1133,8 @@
                         <span class="skill-box-count">04</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">NFC</span>
-                        <span class="skill-tag featured">Swift (NFCTagReaderSession)</span>
+                        <span class="skill-tag">NFC</span>
+                        <span class="skill-tag">Swift (NFCTagReaderSession)</span>
                         <span class="skill-tag">Platform Channels</span>
                         <span class="skill-tag">Camera</span>
                     </div>
@@ -1161,8 +1156,8 @@
                         <span class="skill-box-count">04</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Node.js</span>
-                        <span class="skill-tag featured">TypeScript</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">TypeScript</span>
                         <span class="skill-tag">Cloud Functions</span>
                         <span class="skill-tag">REST API Design &amp; Debugging</span>
                     </div>
@@ -1183,8 +1178,8 @@
                         <span class="skill-box-count">03</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Isar (Offline-First)</span>
-                        <span class="skill-tag featured">Hive</span>
+                        <span class="skill-tag">Isar (Offline-First)</span>
+                        <span class="skill-tag">Hive</span>
                         <span class="skill-tag">Shared Preferences</span>
                     </div>
                 </div>
@@ -1202,9 +1197,9 @@
                         <span class="skill-box-count">07</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Firestore</span>
+                        <span class="skill-tag">Firestore</span>
                         <span class="skill-tag">Realtime Database</span>
-                        <span class="skill-tag featured">Cloud Messaging</span>
+                        <span class="skill-tag">Cloud Messaging</span>
                         <span class="skill-tag">Crashlytics</span>
                         <span class="skill-tag">Firebase Storage</span>
                         <span class="skill-tag">Remote Config</span>
@@ -1227,8 +1222,8 @@
                         <span class="skill-box-count">05</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Dio</span>
-                        <span class="skill-tag featured">Retrofit</span>
+                        <span class="skill-tag">Dio</span>
+                        <span class="skill-tag">Retrofit</span>
                         <span class="skill-tag">WebSocket</span>
                         <span class="skill-tag">Restful API</span>
                         <span class="skill-tag">Http</span>
@@ -1249,8 +1244,8 @@
                         <span class="skill-box-count">05</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Apple Pay</span>
-                        <span class="skill-tag featured">Google Pay</span>
+                        <span class="skill-tag">Apple Pay</span>
+                        <span class="skill-tag">Google Pay</span>
                         <span class="skill-tag">Visa / Online Payments</span>
                         <span class="skill-tag">Subscriptions</span>
                         <span class="skill-tag">Transaction Lifecycle</span>
@@ -1271,11 +1266,11 @@
                         <span class="skill-box-count">05</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">CI/CD GitHub Actions</span>
+                        <span class="skill-tag">CI/CD GitHub Actions</span>
                         <span class="skill-tag">Fastlane</span>
                         <span class="skill-tag">Firebase App Distribution</span>
-                        <span class="skill-tag featured">Google Play</span>
-                        <span class="skill-tag featured">App Store</span>
+                        <span class="skill-tag">Google Play</span>
+                        <span class="skill-tag">App Store</span>
                     </div>
                 </div>
 
@@ -1295,8 +1290,8 @@
                         <span class="skill-box-count">05</span>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag featured">Git</span>
-                        <span class="skill-tag featured">GitHub</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
                         <span class="skill-tag">GitLab</span>
                         <span class="skill-tag">SourceTree</span>
                         <span class="skill-tag">Postman</span>
