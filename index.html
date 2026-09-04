@@ -538,6 +538,86 @@
             flex-wrap: wrap;
         }
 
+        /* ---------- Experience ---------- */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .exp-card {
+            background: var(--panel);
+            border: 1px solid var(--line-strong);
+            padding: 28px 32px;
+            border-radius: var(--radius);
+            transition: background .15s ease, border-color .15s ease, transform .15s ease;
+        }
+
+        .exp-card:hover {
+            background: var(--panel-2);
+            border-color: rgba(79, 209, 197, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 12px;
+        }
+
+        .exp-title-role {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .exp-company {
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--text);
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+        }
+
+        .exp-role-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            color: var(--signal);
+            background: var(--signal-dim);
+            padding: 3px 8px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(79, 209, 197, 0.25);
+        }
+
+        .exp-period {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--muted-2);
+        }
+
+        .exp-bullets {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--muted);
+            font-size: 14.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exp-bullets li {
+            line-height: 1.6;
+        }
+
+        .exp-bullets li strong {
+            color: var(--text);
+        }
+
         /* ---------- About ---------- */
         .about-grid {
             display: grid;
@@ -665,6 +745,7 @@
         <nav class="wrap">
             <div class="brand"><span class="dot"></span> Mohamed Alkinany</div>
             <div class="navlinks">
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#about">About</a>
                 <a href="Mohamed_Alkinany_CV.pdf" target="_blank">CV ↗</a>
@@ -678,11 +759,12 @@
             <div>
                 <div class="hero-tag mono"><span>●</span> Available for freelance &amp; full-time roles</div>
                 <h1>Flutter developer building <span>offline-first</span> mobile systems.</h1>
-                <p class="lede">Two years deep in Clean Architecture, BLoC, and Firebase — shipping apps that stay
-                    reliable with or without a signal. Currently building GoSports, an academy platform serving 100,000+
-                    athletes across 1,500+ foundations, including Real Madrid Academy.</p>
+                <p class="lede">Flutter developer with 2+ years of experience building high-scale product &amp; client
+                    systems. Strong in Clean Architecture, BLoC, offline-first design, native iOS Swift integration
+                    (NFC), and backend debugging (Node.js &amp; Cloud Functions). Currently scaling GoSports for
+                    100,000+ users and 1,500+ academies.</p>
                 <div class="cta-row">
-                    <a href="#projects" class="btn primary">See the work</a>
+                    <a href="#experience" class="btn primary">View Experience</a>
                     <a href="Mohamed_Alkinany_CV.pdf" target="_blank" download class="btn ghost">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -701,6 +783,73 @@
                     <div class="hero-portrait-badge mono">
                         <span class="dot"></span> Flutter Architect
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-head">
+                <h2>Work Experience</h2>
+                <span class="count mono">03 companies</span>
+            </div>
+
+            <div class="exp-list">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div class="exp-title-role">
+                            <span class="exp-company">GoSportNetWork</span>
+                            <span class="exp-role-badge">Flutter Developer</span>
+                        </div>
+                        <span class="exp-period">03.2025 – Present | Cairo</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Contributing to the <strong>GoSports Version 2</strong> app with improved performance,
+                            modular architecture, and offline-first scalability for 100,000+ active athletes.</li>
+                        <li>Built a complete <strong>NFC attendance system</strong> end-to-end, including native iOS
+                            integration via <strong>Swift (NFCTagReaderSession)</strong> through Flutter platform
+                            channels, resolving platform-specific NDEF limitations.</li>
+                        <li>Designed and shipped a full <strong>deep-linking system</strong> (Firebase Hosting, Android
+                            App Links, iOS Universal Links) with duplicate-prevention and cold/warm/background launch
+                            handling.</li>
+                        <li>Built backend endpoints in <strong>TypeScript (Cloud Functions)</strong>, including secure
+                            member-list APIs with Auth token verification and bulk import logic for 175+ records.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div class="exp-title-role">
+                            <span class="exp-company">Khatab web</span>
+                            <span class="exp-role-badge">Flutter Developer</span>
+                        </div>
+                        <span class="exp-period">06.2024 – 03.2025 | Mansoura</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Worked as the <strong>sole Flutter developer</strong>, owning end-to-end delivery across
+                            multiple client applications alongside a UI designer and backend developer.</li>
+                        <li>Refactored and modernized <strong>6+ legacy applications</strong> (دليل الطالب, SalamTaxi,
+                            Yalla Tawsela, Ghena Alshaam, مزاد, اصلاح) — rebuilding outdated codebases and re-publishing
+                            them to Google Play and App Store.</li>
+                        <li>Worked directly in the <strong>Node.js backend</strong> to debug and resolve integration
+                            issues, extending beyond frontend-only involvement.</li>
+                        <li>Acted as the team's technical reference point for data structure decisions, regularly
+                            consulted on how to model and return data for new features.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div class="exp-title-role">
+                            <span class="exp-company">Code Click</span>
+                            <span class="exp-role-badge">Flutter Developer</span>
+                        </div>
+                        <span class="exp-period">12.2023 – 06.2024 | Mansoura</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Built template-based ride-hailing and delivery applications with live tracking and secure
+                            payment integration, as part of an early-stage startup building reusable app templates.</li>
+                        <li>Gained extensive experience in rapid prototyping and startup-paced development.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -781,7 +930,7 @@
                             rel="noopener" class="project-link">Google Play ↗</a>
                     </div>
                 </div>
-                <div class="card">
+                <!-- <div class="card">
                     <h4>اصلاح</h4>
                     <p>On-demand home maintenance booking — plumbing, electricity, AC repair — with dynamic category
                         filtering and order tracking.</p>
@@ -789,105 +938,123 @@
                             pattern</span></div>
                     <div class="project-links">
                         <!-- TODO: Replace # with your Google Play URL -->
-                        <a href="#" target="_blank" rel="noopener" class="project-link">Google Play ↗</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <h4>Ghena Alshaam</h4>
-                    <p>Premium retail e-commerce experience built for a lightweight, reactive architecture with
-                        dependency injection.</p>
-                    <div class="tags"><span class="tag">GetX</span><span class="tag">DI</span></div>
-                    <div class="project-links">
-                        <!-- TODO: Replace # with your Google Play URL -->
-                        <a href="#" target="_blank" rel="noopener" class="project-link">Google Play ↗</a>
-                        <!-- TODO: Replace # with your App Store URL -->
-                        <a href="#" target="_blank" rel="noopener" class="project-link">App Store ↗</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <h4>الأمين الراعي</h4>
-                    <p>Ordering platform for meat products — browse, order, and receive with quality-assurance features
-                        built in.</p>
-                    <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span></div>
-                    <div class="project-links">
-                        <a href="https://apps.apple.com/eg/app/%D9%84%D8%AD%D9%88%D9%85-%D8%BA%D9%86%D9%89-%D8%A7%D9%84%D8%B4%D8%A7%D9%85-%D9%85%D8%A4%D8%B3%D8%B3%D8%A9-%D9%84%D8%AD%D9%88%D9%85/id1475021763"
-                            target="_blank" rel="noopener" class="project-link">App Store ↗</a>
-                    </div>
-                </div>
-                <div class="card">
+                <a href="#" target="_blank" rel="noopener" class="project-link">Google Play ↗</a>
+            </div>
+    </div> -->
+    <div class="card">
+        <h4>Ghena Alshaam</h4>
+        <p>Premium retail e-commerce experience built for a lightweight, reactive architecture with
+            dependency injection.</p>
+        <div class="tags"><span class="tag">GetX</span><span class="tag">DI</span></div>
+        <div class="project-links">
+            <!-- TODO: Replace # with your Google Play URL -->
+            <a href="#" target="_blank" rel="noopener" class="project-link">Google Play ↗</a>
+            <!-- TODO: Replace # with your App Store URL -->
+            <a href="#" target="_blank" rel="noopener" class="project-link">App Store ↗</a>
+        </div>
+    </div>
+    <div class="card">
+        <h4>الأمين الراعي</h4>
+        <p>Ordering platform for meat products — browse, order, and receive with quality-assurance features
+            built in.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span></div>
+        <div class="project-links">
+            <a href="https://apps.apple.com/eg/app/%D9%84%D8%AD%D9%88%D9%85-%D8%BA%D9%86%D9%89-%D8%A7%D9%84%D8%B4%D8%A7%D9%85-%D9%85%D8%A4%D8%B3%D8%B3%D8%A9-%D9%84%D8%AD%D9%88%D9%85/id1475021763"
+                target="_blank" rel="noopener" class="project-link">App Store ↗</a>
+        </div>
+    </div>
+    <!-- <div class="card">
                     <h4>مزاد</h4>
                     <p>Live bidding and auction app — list items, place bids, and track the highest offer in real time.
                     </p>
                     <div class="tags"><span class="tag">Flutter</span><span class="tag">Real-time data</span></div>
                     <div class="project-links">
                         <!-- TODO: Replace # with your App Store URL -->
-                        <a href="#" target="_blank" rel="noopener" class="project-link">App Store ↗</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <h4>Manaber</h4>
-                    <p>Freelance build for a physical therapy center for disabled children — logs visit data and shares
-                        it with specialist doctors.</p>
-                    <div class="tags"><span class="tag">Freelance</span><span class="tag">Mobile + Desktop</span></div>
+    <a href="#" target="_blank" rel="noopener" class="project-link">App Store ↗</a>
+    </div>
+    </div> -->
+    <div class="card">
+        <h4>Manaber</h4>
+        <p>Freelance build for a physical therapy center for disabled children — logs visit data and shares
+            it with specialist doctors.</p>
+        <div class="tags"><span class="tag">Freelance</span><span class="tag">Mobile + Desktop</span></div>
 
-                </div>
-            </div>
-        </section>
+    </div>
+    </div>
+    </section>
 
-        <section id="about" class="tight">
-            <div class="section-head">
-                <h2>About</h2>
-            </div>
-            <div class="about-grid">
-                <div>
-                    <p>I'm a Flutter developer based in Egypt, focused on the parts of mobile engineering that are easy
-                        to skip and hard to undo — architecture that survives scale, sync logic that survives bad
-                        connections, and payment flows that survive edge cases.</p>
-                    <p>Most of my recent work has centered on GoSports, an offline-first sports academy platform now
-                        running across 1,500+ foundations. Before that, I built ride-hailing, e-commerce, and booking
-                        apps end to end — from API integration to App Store release.</p>
-                    <div class="edu">
-                        <span class="mono">2019 — 2023</span>
-                        <h4>B.Sc. Computer Science, Mansoura University</h4>
-                    </div>
-                </div>
-                <div>
-                    <div class="skill-group">
-                        <span class="label mono">state &amp; architecture</span>
-                        <div class="tags"><span class="tag">BLoC</span><span class="tag">GetX</span><span
-                                class="tag">Clean
-                                Architecture</span><span class="tag">MVVM</span><span class="tag">MVC</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">local storage</span>
-                        <div class="tags"><span class="tag">Isar</span><span class="tag">Hive</span><span
-                                class="tag">Shared
-                                Preferences</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">firebase</span>
-                        <div class="tags"><span class="tag">Firestore</span><span class="tag">FCM</span><span
-                                class="tag">Crashlytics</span><span class="tag">Remote Config</span><span
-                                class="tag">Analytics</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">networking</span>
-                        <div class="tags"><span class="tag">REST</span><span class="tag">WebSocket</span><span
-                                class="tag">Dio</span><span class="tag">Retrofit</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">payments</span>
-                        <div class="tags"><span class="tag">Apple Pay</span><span class="tag">Google Pay</span><span
-                                class="tag">Subscriptions</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">ci/cd</span>
-                        <div class="tags"><span class="tag">GitHub Actions</span><span class="tag">Fastlane</span><span
-                                class="tag">Firebase App Distribution</span></div>
-                    </div>
+    <section id="about" class="tight">
+        <div class="section-head">
+            <h2>About</h2>
+        </div>
+        <div class="about-grid">
+            <div>
+                <p>I'm a Flutter developer based in Egypt, focused on the parts of mobile engineering that are easy
+                    to skip and hard to undo — architecture that survives scale, sync logic that survives bad
+                    connections, and payment flows that survive edge cases.</p>
+                <p>Most of my recent work has centered on GoSports, an offline-first sports academy platform now
+                    running across 1,500+ foundations. Before that, I built ride-hailing, e-commerce, and booking
+                    apps end to end — from API integration to App Store release.</p>
+                <div class="edu">
+                    <span class="mono">2019 — 2023</span>
+                    <h4>B.Sc. Computer Science, Mansoura University</h4>
                 </div>
             </div>
-        </section>
+            <div>
+                <div class="skill-group">
+                    <span class="label mono">state management &amp; architecture</span>
+                    <div class="tags"><span class="tag">Bloc</span><span class="tag">GetX</span><span class="tag">Clean
+                            Architecture</span><span class="tag">MVVM</span><span class="tag">MVC</span><span
+                            class="tag">DI (Injectable / GetIt)</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">hardware &amp; native integration</span>
+                    <div class="tags"><span class="tag">NFC</span><span class="tag">Swift
+                            (NFCTagReaderSession)</span><span class="tag">Platform Channels</span><span
+                            class="tag">Camera</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">backend exposure &amp; cloud</span>
+                    <div class="tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span
+                            class="tag">Cloud Functions</span><span class="tag">REST API Design &amp; Debugging</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">local data storage</span>
+                    <div class="tags"><span class="tag">Isar</span><span class="tag">Hive</span><span class="tag">Shared
+                            Preferences</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">firebase integration</span>
+                    <div class="tags"><span class="tag">Firestore</span><span class="tag">Realtime Database</span><span
+                            class="tag">Cloud Messaging (FCM)</span><span class="tag">Crashlytics</span><span
+                            class="tag">Firebase Storage</span><span class="tag">Remote Config</span><span
+                            class="tag">Analytics</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">api &amp; networking</span>
+                    <div class="tags"><span class="tag">WebSocket</span><span class="tag">RESTful API</span><span
+                            class="tag">Dio</span><span class="tag">Retrofit</span><span class="tag">Http</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">payments &amp; financial systems</span>
+                    <div class="tags"><span class="tag">Subscriptions</span><span class="tag">Online Payments (Visa,
+                            Apple Pay, Google Pay)</span><span class="tag">Transaction Lifecycle</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">devops &amp; publishing</span>
+                    <div class="tags"><span class="tag">CI/CD GitHub Actions</span><span
+                            class="tag">Fastlane</span><span class="tag">Firebase App Distribution</span><span
+                            class="tag">Google Play</span><span class="tag">App Store</span></div>
+                </div>
+                <div class="skill-group">
+                    <span class="label mono">version control</span>
+                    <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span
+                            class="tag">GitLab</span><span class="tag">SourceTree</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
 
     <section id="contact" class="contact">
@@ -903,6 +1070,9 @@
                         class="arrow">→</span> LinkedIn</a>
                 <a href="https://github.com/malknany" target="_blank" rel="noopener"><span class="arrow">→</span>
                     GitHub</a>
+                <a href="https://medium.com/@malknany98/about" target="_blank" rel="noopener"><span
+                        class="arrow">→</span>
+                    Medium</a>
                 <a href="Mohamed_Alkinany_CV.pdf" target="_blank" download><span class="arrow">→</span> resume / cv
                     (.pdf)</a>
             </div>
