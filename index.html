@@ -417,14 +417,22 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            align-items: flex-start;
         }
 
         .tag {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
-            padding: 5px 10px;
+            line-height: 1;
+            padding: 0 10px;
+            height: 26px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
             border: 1px solid var(--line-strong);
             color: var(--muted);
+            box-sizing: border-box;
         }
 
         .featured .side.detail {
@@ -727,25 +735,32 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            align-items: flex-start;
+            align-content: flex-start;
         }
 
         .skill-tag {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 11.5px;
-            padding: 5px 11px;
+            line-height: 1;
+            padding: 0 12px;
+            height: 30px;
             border-radius: var(--radius);
             background: var(--panel-2);
             border: 1px solid var(--line-strong);
             color: var(--text);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            white-space: nowrap;
+            box-sizing: border-box;
+            flex-shrink: 0;
             transition: all .15s ease;
         }
 
         .skill-tag.featured {
             border-color: rgba(79, 209, 197, 0.35);
-            background: rgba(79, 209, 197, 0.06);
+            background: rgba(79, 209, 197, 0.08);
             color: #d1fae5;
         }
 
