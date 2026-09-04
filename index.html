@@ -249,88 +249,69 @@
             background: var(--panel);
         }
 
-        /* Layered architecture graphic */
-        .stack-graphic {
-            position: relative;
-            height: 340px;
+        /* Hero Portrait */
+        .hero-portrait-wrapper {
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
-        .layer {
-            position: absolute;
-            width: 260px;
-            height: 100px;
-            border: 1px solid var(--line-strong);
+        .hero-portrait-frame {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            border-radius: 4px;
+            padding: 8px;
             background: var(--panel);
+            border: 1px solid var(--line-strong);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+            transition: border-color .2s ease, transform .2s ease;
+        }
+
+        .hero-portrait-frame:hover {
+            border-color: var(--signal);
+            transform: translateY(-2px);
+        }
+
+        .hero-portrait-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 2px;
+            display: block;
+            border: 1px solid var(--line);
+        }
+
+        .hero-portrait-badge {
+            position: absolute;
+            bottom: -12px;
+            right: 14px;
+            background: var(--panel-2);
+            border: 1px solid var(--line-strong);
+            padding: 5px 12px;
             border-radius: var(--radius);
+            font-size: 11.5px;
+            color: var(--signal);
             display: flex;
             align-items: center;
-            padding: 0 20px;
-            justify-content: space-between;
+            gap: 6px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        .layer .name {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            color: var(--text);
-        }
-
-        .layer .sub {
-            font-size: 11px;
-            color: var(--muted-2);
-        }
-
-        .layer.l1 {
-            transform: translate(-70px, -90px);
-            z-index: 3;
-        }
-
-        .layer.l2 {
-            transform: translate(0, -6px);
-            z-index: 2;
-            background: var(--panel-2);
-        }
-
-        .layer.l3 {
-            transform: translate(70px, 78px);
-            z-index: 1;
-        }
-
-        .layer.l3 .name {
-            color: var(--signal);
-        }
-
-        .layer .ind {
+        .hero-portrait-badge .dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--muted-2);
-            flex-shrink: 0;
-        }
-
-        .layer.l3 .ind {
             background: var(--signal);
-            box-shadow: 0 0 0 3px var(--signal-dim);
+            box-shadow: 0 0 0 2px var(--signal-dim);
         }
 
         @media (max-width:860px) {
-            .stack-graphic {
-                height: 260px;
-            }
-
-            .layer {
-                width: 220px;
-                height: 84px;
-            }
-
-            .layer.l1 {
-                transform: translate(-46px, -64px);
-            }
-
-            .layer.l3 {
-                transform: translate(46px, 58px);
+            .hero-portrait-frame {
+                max-width: 260px;
             }
         }
 
@@ -714,10 +695,13 @@
                     <a href="#contact" class="btn ghost">Get in touch</a>
                 </div>
             </div>
-            <div class="stack-graphic" aria-hidden="true">
-                <div class="layer l1"><span class="name">presentation</span><span class="ind"></span></div>
-                <div class="layer l2"><span class="name">domain</span><span class="sub">use cases</span></div>
-                <div class="layer l3"><span class="name">data</span><span class="ind"></span></div>
+            <div class="hero-portrait-wrapper">
+                <div class="hero-portrait-frame">
+                    <img src="profile.jpg" alt="Mohamed Alkinany — Flutter Developer" class="hero-portrait-img">
+                    <div class="hero-portrait-badge mono">
+                        <span class="dot"></span> Flutter Architect
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -915,10 +899,10 @@
             <div class="contact-links mono">
                 <a href="mailto:malknany98@gmail.com"><span class="arrow">→</span> malknany98@gmail.com</a>
                 <a href="tel:+201021986038"><span class="arrow">→</span> +20 102 198 6038</a>
-                <a href="https://linkedin.com/in/mohammedAlkananiy" target="_blank" rel="noopener"><span
-                        class="arrow">→</span> linkedin.com/in/mohammedAlkananiy</a>
-                <a href="https://github.com/malkinany" target="_blank" rel="noopener"><span class="arrow">→</span>
-                    github.com/malkinany</a>
+                <a href="https://www.linkedin.com/in/mohamed-alkinany-8213321b2/" target="_blank" rel="noopener"><span
+                        class="arrow">→</span> LinkedIn</a>
+                <a href="https://github.com/malknany" target="_blank" rel="noopener"><span class="arrow">→</span>
+                    GitHub</a>
                 <a href="Mohamed_Alkinany_CV.pdf" target="_blank" download><span class="arrow">→</span> resume / cv
                     (.pdf)</a>
             </div>
