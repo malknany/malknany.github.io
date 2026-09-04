@@ -618,6 +618,144 @@
             color: var(--text);
         }
 
+        /* ---------- Skills Section ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 980px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-box {
+            background: var(--panel);
+            border: 1px solid var(--line-strong);
+            padding: 26px 24px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+
+        .skill-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: transparent;
+            transition: background .2s ease;
+        }
+
+        .skill-box:hover {
+            background: var(--panel-2);
+            border-color: rgba(79, 209, 197, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(79, 209, 197, 0.08);
+        }
+
+        .skill-box:hover::before {
+            background: linear-gradient(90deg, var(--signal), transparent);
+        }
+
+        .skill-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 12px;
+        }
+
+        .skill-box-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-box-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            background: var(--signal-dim);
+            border: 1px solid rgba(79, 209, 197, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--signal);
+            flex-shrink: 0;
+        }
+
+        .skill-box-icon svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .skill-box-title {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            font-size: 15.5px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .skill-box-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--muted-2);
+            background: var(--panel-2);
+            padding: 2px 7px;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            padding: 5px 11px;
+            border-radius: var(--radius);
+            background: var(--panel-2);
+            border: 1px solid var(--line-strong);
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all .15s ease;
+        }
+
+        .skill-tag.featured {
+            border-color: rgba(79, 209, 197, 0.35);
+            background: rgba(79, 209, 197, 0.06);
+            color: #d1fae5;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--signal);
+            color: var(--signal);
+            background: var(--signal-dim);
+            transform: translateY(-1px);
+        }
+
         /* ---------- About ---------- */
         .about-grid {
             display: grid;
@@ -639,8 +777,8 @@
         }
 
         .edu {
-            margin-top: 28px;
-            padding-top: 24px;
+            margin-top: 24px;
+            padding-top: 20px;
             border-top: 1px solid var(--line);
         }
 
@@ -654,22 +792,6 @@
         .edu h4 {
             font-size: 15px;
             font-weight: 600;
-        }
-
-        .skill-group {
-            margin-bottom: 22px;
-        }
-
-        .skill-group .label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            color: var(--signal);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .skill-group .tags {
-            gap: 8px;
         }
 
         /* ---------- Contact ---------- */
@@ -747,6 +869,7 @@
             <div class="navlinks">
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
                 <a href="#about">About</a>
                 <a href="Mohamed_Alkinany_CV.pdf" target="_blank">CV ↗</a>
                 <a href="#contact">Contact</a>
@@ -952,78 +1075,256 @@
             </div>
         </section>
 
+        <section id="skills">
+            <div class="section-head">
+                <div>
+                    <h2>Technical Skills</h2>
+                    <p style="color: var(--muted); font-size: 14px; margin: 6px 0 0;">Mobile architecture, native bridges, offline engines, and cloud platforms.</p>
+                </div>
+                <span class="count mono">09 domains</span>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                    <polyline points="2 17 12 22 22 17"/>
+                                    <polyline points="2 12 12 17 22 12"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Architecture &amp; State</span>
+                        </div>
+                        <span class="skill-box-count">06</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">BLoC / Cubit</span>
+                        <span class="skill-tag featured">Clean Architecture</span>
+                        <span class="skill-tag">GetX</span>
+                        <span class="skill-tag">MVVM</span>
+                        <span class="skill-tag">MVC</span>
+                        <span class="skill-tag">DI (Injectable / GetIt)</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Native &amp; Hardware</span>
+                        </div>
+                        <span class="skill-box-count">04</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Swift (NFCTagReaderSession)</span>
+                        <span class="skill-tag featured">NFC Integration</span>
+                        <span class="skill-tag">Platform Channels</span>
+                        <span class="skill-tag">Camera &amp; Sensors</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Backend &amp; Cloud</span>
+                        </div>
+                        <span class="skill-box-count">04</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Node.js</span>
+                        <span class="skill-tag featured">TypeScript</span>
+                        <span class="skill-tag">Cloud Functions</span>
+                        <span class="skill-tag">REST API Design &amp; Debug</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Offline &amp; Local DB</span>
+                        </div>
+                        <span class="skill-box-count">03</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Isar (Offline-First)</span>
+                        <span class="skill-tag featured">Hive</span>
+                        <span class="skill-tag">Shared Preferences</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Firebase Ecosystem</span>
+                        </div>
+                        <span class="skill-box-count">07</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Cloud Firestore</span>
+                        <span class="skill-tag">Realtime Database</span>
+                        <span class="skill-tag featured">Cloud Messaging (FCM)</span>
+                        <span class="skill-tag">Crashlytics</span>
+                        <span class="skill-tag">Storage</span>
+                        <span class="skill-tag">Remote Config</span>
+                        <span class="skill-tag">Analytics</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Networking &amp; API</span>
+                        </div>
+                        <span class="skill-box-count">05</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Dio</span>
+                        <span class="skill-tag featured">Retrofit</span>
+                        <span class="skill-tag">WebSocket</span>
+                        <span class="skill-tag">RESTful APIs</span>
+                        <span class="skill-tag">Http</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                    <line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Payments &amp; Wallets</span>
+                        </div>
+                        <span class="skill-box-count">04</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Apple Pay</span>
+                        <span class="skill-tag featured">Google Pay</span>
+                        <span class="skill-tag">In-App Subscriptions</span>
+                        <span class="skill-tag">Payment Lifecycle</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">DevOps &amp; Publishing</span>
+                        </div>
+                        <span class="skill-box-count">05</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">CI/CD GitHub Actions</span>
+                        <span class="skill-tag">Fastlane</span>
+                        <span class="skill-tag">Firebase App Distribution</span>
+                        <span class="skill-tag featured">Google Play Console</span>
+                        <span class="skill-tag featured">App Store Connect</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-title-wrap">
+                            <span class="skill-box-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="6" y1="3" x2="6" y2="15"/>
+                                    <circle cx="18" cy="6" r="3"/>
+                                    <circle cx="6" cy="18" r="3"/>
+                                    <path d="M18 9a9 9 0 0 1-9 9"/>
+                                </svg>
+                            </span>
+                            <span class="skill-box-title">Version Control &amp; Tools</span>
+                        </div>
+                        <span class="skill-box-count">05</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured">Git</span>
+                        <span class="skill-tag featured">GitHub</span>
+                        <span class="skill-tag">GitLab</span>
+                        <span class="skill-tag">SourceTree</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="tight">
             <div class="section-head">
                 <h2>About</h2>
+                <span class="count mono">Background &amp; Education</span>
             </div>
             <div class="about-grid">
                 <div>
                     <p>I'm a Flutter developer based in Egypt, focused on the parts of mobile engineering that are easy
                         to skip and hard to undo — architecture that survives scale, sync logic that survives bad
                         connections, and payment flows that survive edge cases.</p>
-                    <p>Most of my recent work has centered on GoSports, an offline-first sports academy platform now
-                        running across 1,500+ foundations. Before that, I built ride-hailing, e-commerce, and booking
-                        apps end to end — from API integration to App Store release.</p>
+                    <p>My work spans both high-scale product engineering (GoSports, 100k+ athletes) and fast-paced client delivery. I specialize in offline-first systems, native iOS Swift bridges, and end-to-end backend integration with Node.js &amp; Cloud Functions.</p>
                     <div class="edu">
                         <span class="mono">2019 — 2023</span>
-                        <h4>B.Sc. Computer Science, Mansoura University</h4>
+                        <h4>B.Sc. Computer Science — Mansoura University</h4>
+                        <p style="font-size: 13.5px; color: var(--muted); margin-top: 6px;">Graduation Project: Recruitment &amp; Training App (Grade: A+)</p>
                     </div>
                 </div>
                 <div>
-                    <div class="skill-group">
-                        <span class="label mono">state management &amp; architecture</span>
-                        <div class="tags"><span class="tag">Bloc</span><span class="tag">GetX</span><span
-                                class="tag">Clean
-                                Architecture</span><span class="tag">MVVM</span><span class="tag">MVC</span><span
-                                class="tag">DI (Injectable / GetIt)</span></div>
+                    <div class="edu" style="margin-top: 0; padding-top: 0; border-top: none;">
+                        <span class="mono" style="color: var(--signal); margin-bottom: 8px;">COURSES &amp; TRAINING</span>
+                        <ul class="exp-bullets" style="margin-top: 8px; padding-left: 18px;">
+                            <li><strong>Problem Solving L1</strong> — Coach Academy (Cairo)</li>
+                            <li><strong>Clean Architecture in Flutter 3</strong> — Ismail Elmogy (Udemy)</li>
+                            <li><strong>Flutter BLoC &amp; Firebase [2025]</strong> — Maftuna Zokirova (Udemy)</li>
+                            <li><strong>CCIC, FCIS</strong> — Mansoura University</li>
+                        </ul>
                     </div>
-                    <div class="skill-group">
-                        <span class="label mono">hardware &amp; native integration</span>
-                        <div class="tags"><span class="tag">NFC</span><span class="tag">Swift
-                                (NFCTagReaderSession)</span><span class="tag">Platform Channels</span><span
-                                class="tag">Camera</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">backend exposure &amp; cloud</span>
-                        <div class="tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span
-                                class="tag">Cloud Functions</span><span class="tag">REST API Design &amp;
-                                Debugging</span>
+                    <div class="edu" style="margin-top: 24px;">
+                        <span class="mono" style="color: var(--signal); margin-bottom: 8px;">LANGUAGES &amp; ACTIVITIES</span>
+                        <div class="tags" style="margin-top: 10px;">
+                            <span class="tag">Arabic (Native)</span>
+                            <span class="tag">English (Very Good)</span>
+                            <span class="tag">CIS (Video Editing)</span>
+                            <span class="tag">GOC (Media Team)</span>
+                            <span class="tag">Mega (Logistics)</span>
                         </div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">local data storage</span>
-                        <div class="tags"><span class="tag">Isar</span><span class="tag">Hive</span><span
-                                class="tag">Shared
-                                Preferences</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">firebase integration</span>
-                        <div class="tags"><span class="tag">Firestore</span><span class="tag">Realtime
-                                Database</span><span class="tag">Cloud Messaging (FCM)</span><span
-                                class="tag">Crashlytics</span><span class="tag">Firebase Storage</span><span
-                                class="tag">Remote Config</span><span class="tag">Analytics</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">api &amp; networking</span>
-                        <div class="tags"><span class="tag">WebSocket</span><span class="tag">RESTful API</span><span
-                                class="tag">Dio</span><span class="tag">Retrofit</span><span class="tag">Http</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">payments &amp; financial systems</span>
-                        <div class="tags"><span class="tag">Subscriptions</span><span class="tag">Online Payments (Visa,
-                                Apple Pay, Google Pay)</span><span class="tag">Transaction Lifecycle</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">devops &amp; publishing</span>
-                        <div class="tags"><span class="tag">CI/CD GitHub Actions</span><span
-                                class="tag">Fastlane</span><span class="tag">Firebase App Distribution</span><span
-                                class="tag">Google Play</span><span class="tag">App Store</span></div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="label mono">version control</span>
-                        <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span
-                                class="tag">GitLab</span><span class="tag">SourceTree</span></div>
                     </div>
                 </div>
             </div>
