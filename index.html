@@ -145,6 +145,25 @@
             }
         }
 
+        .nav-toggle {
+            display: none;
+            background: var(--panel);
+            border: 1px solid var(--line-strong);
+            color: var(--text);
+            padding: 7px 9px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: border-color .15s ease, background .15s ease, color .15s ease;
+        }
+
+        .nav-toggle:hover {
+            border-color: var(--signal);
+            color: var(--signal);
+            background: var(--panel-2);
+        }
+
         .navlinks {
             display: flex;
             gap: 28px;
@@ -164,9 +183,46 @@
         }
 
         @media (max-width:640px) {
+            .brand {
+                font-size: 15px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
             .navlinks {
-                gap: 16px;
-                font-size: 13px;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--panel);
+                border-bottom: 1px solid var(--line-strong);
+                flex-direction: column;
+                padding: 12px 20px;
+                gap: 2px;
+                box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+            }
+
+            .navlinks.open {
+                display: flex;
+            }
+
+            .navlinks a {
+                padding: 10px 12px;
+                font-size: 14px;
+                border-radius: var(--radius);
+                border-bottom: none;
+                border-left: 2px solid transparent;
+            }
+
+            .navlinks a:hover {
+                background: var(--panel-2);
+                color: var(--signal);
+                border-left-color: var(--signal);
             }
         }
 
@@ -878,7 +934,15 @@
     <header>
         <nav class="wrap">
             <div class="brand"><span class="dot"></span> Mohamed Alkinany</div>
-            <div class="navlinks">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="navlinks" id="navLinks">
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
@@ -1456,6 +1520,35 @@
             <span class="mono">Cairo, Egypt</span>
         </div>
     </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navToggle.focus();
+                }
+            });
+        }
+    </script>
 
 </body>
 
