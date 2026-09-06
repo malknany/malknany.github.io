@@ -47,6 +47,21 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
+
+            .reveal-section,
+            .grid .card,
+            .skills-grid .skill-box {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .hero-text,
+            .hero-portrait-wrapper {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
 
         body {
@@ -311,6 +326,50 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        /* ---------- Scroll Reveal & Entrance Animations ---------- */
+        @keyframes heroFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text {
+            animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-section.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .grid .card,
+        .skills-grid .skill-box {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            will-change: opacity, transform;
+        }
+
+        .grid .card.revealed,
+        .skills-grid .skill-box.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-portrait-frame {
@@ -955,7 +1014,7 @@
 
     <div class="wrap">
         <section class="hero">
-            <div>
+            <div class="hero-text">
                 <div class="hero-tag mono"><span>●</span> Open to relocation, remote, or hybrid — full-time &amp; freelance</div>
                 <h1>Flutter developer building <span>offline-first</span> mobile systems.</h1>
                 <p class="lede">Flutter developer with 2+ years of experience building high-scale product &amp; client
@@ -986,7 +1045,7 @@
             </div>
         </section>
 
-        <section id="experience">
+        <section id="experience" class="reveal-section">
             <div class="section-head">
                 <h2>Work Experience</h2>
                 <span class="count mono">03 companies</span>
@@ -1067,7 +1126,7 @@
             </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="reveal-section">
             <div class="section-head">
                 <h2>Projects</h2>
                 <span class="count mono">08 shipped</span>
@@ -1165,7 +1224,7 @@
             </div>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="reveal-section">
             <div class="section-head">
                 <div>
                     <h2>Technical Skills</h2>
@@ -1440,7 +1499,7 @@
             </div>
         </section>
 
-        <section id="about" class="tight">
+        <section id="about" class="tight reveal-section">
             <div class="section-head">
                 <h2>About</h2>
                 <span class="count mono">Background &amp; Education</span>
@@ -1492,7 +1551,7 @@
         </section>
     </div>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal-section">
         <div class="wrap contact-inner">
             <div>
                 <h2>Let's build something that works offline too.</h2>
@@ -1546,6 +1605,113 @@
                     navToggle.setAttribute('aria-expanded', 'false');
                     navToggle.focus();
                 }
+            });
+        }
+
+        // Check reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+            document.querySelectorAll('.reveal-section, .grid .card, .skills-grid .skill-box').forEach(el => {
+                el.classList.add('revealed');
+            });
+        } else {
+            // 1. Scroll-reveal for major sections
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            document.querySelectorAll('.reveal-section').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // 2. Stagger reveal for grid cards and skill boxes
+            const gridObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const items = entry.target.querySelectorAll('.card, .skill-box');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('revealed');
+                            }, index * 70);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            });
+
+            document.querySelectorAll('.grid, .skills-grid').forEach(grid => {
+                gridObserver.observe(grid);
+            });
+
+            // 4. Animated Stat Counters in featured GoSports card
+            const featuredCard = document.querySelector('.featured');
+            if (featuredCard) {
+                const statObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statRow = entry.target.querySelector('.stat-row');
+                            if (statRow) {
+                                animateCounters(statRow);
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2
+                });
+                statObserver.observe(featuredCard);
+            }
+        }
+
+        function animateCounters(statRow) {
+            const stats = statRow.querySelectorAll('.stat b');
+            stats.forEach(stat => {
+                const rawText = stat.textContent.trim();
+                const match = rawText.match(/^([\d,]+)(.*)$/);
+                if (!match) return;
+                const numStr = match[1].replace(/,/g, '');
+                const target = parseFloat(numStr);
+                const suffix = match[2];
+                const hasCommas = match[1].includes(',');
+
+                const duration = 1200;
+                let startTime = null;
+
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutCubic(progress);
+                    const currentVal = Math.round(easedProgress * target);
+
+                    const formattedVal = hasCommas ? currentVal.toLocaleString('en-US') : currentVal.toString();
+                    stat.textContent = formattedVal + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        const finalVal = hasCommas ? target.toLocaleString('en-US') : target.toString();
+                        stat.textContent = finalVal + suffix;
+                    }
+                }
+
+                requestAnimationFrame(step);
             });
         }
     </script>
